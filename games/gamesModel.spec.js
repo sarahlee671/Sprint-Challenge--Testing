@@ -14,7 +14,7 @@ describe('games model', () => {
     }
 
     describe('insert()', () => {
-        it('should insert donation', async () => {
+        it('should insert game', async () => {
             await games.insert(mockGame);
             const game = await db('games');
             expect(game).toHaveLength(1)
@@ -22,7 +22,7 @@ describe('games model', () => {
     })
 
     describe('getAll()', () => {
-        it('should get all donations', async () => {
+        it('should get all games', async () => {
             const allGames = await games.getAll();
             expect(Array.isArray(allGames)).toBe(true)
         })
