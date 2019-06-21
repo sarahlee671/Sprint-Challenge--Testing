@@ -7,9 +7,15 @@ describe('games model', () => {
         await db('games').truncate();
     })
 
-    describe('add()', () => {
+    const mockGame = {
+        title: 'AddGame',
+        genre: 'Arcade',
+        releaseYear: '2019'
+    }
+
+    describe('insert()', () => {
         it('should insert donation', async () => {
-            await games.add(mockDonation);
+            await games.insert(mockGame);
             const game = await db('games');
             expect(game).toHaveLength(1)
         })
@@ -18,7 +24,7 @@ describe('games model', () => {
     describe('getAll()', () => {
         it('should get all donations', async () => {
             const allGames = await games.getAll();
-            expect(Array.isArray(allDonations)).toBe(true)
+            expect(Array.isArray(allGames)).toBe(true)
         })
     })
 })
